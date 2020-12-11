@@ -4,7 +4,13 @@ const listB = [2, 3, 4, 2, 6, 2, 5, 2, 2, 3]
 
 function ex01() {
         
-    let countInterval = listA.filter(num => num >= 10 && num <= 20).length
+    var countInterval = 0 // listA.filter(num => num >= 10 && num <= 20).length
+
+    listA.forEach( num => {
+        if(num >= 10 && num <= 20)
+            countInterval++
+    })
+
     let countNotInterval = listA.length - countInterval
 
     console.log(`\nqtd de números entre 10 e 20: ${countInterval}\n`)
