@@ -47,8 +47,8 @@ function exercicio03() {
     console.log(`lista D ${listD}\n`)
 }
 
-ex01()
+exercicio01()
 console.log("---------------------------------------------------------------\n")
-ex02()
+exercicio02()
 console.log("---------------------------------------------------------------\n")
-ex03()
+exercicio03()
