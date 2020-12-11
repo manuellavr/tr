@@ -2,11 +2,11 @@
 const listA = [0, 1, 20, 30, 4, 8, 10, 15, 18, 8]
 const listB = [2, 3, 4, 2, 6, 2, 5, 2, 2, 3]
 
-function ex01() {
+function exercicio01() {
         
     var countInterval = 0 // listA.filter(num => num >= 10 && num <= 20).length
 
-    listA.forEach( num => {
+    listA.forEach(num => {
         if(num >= 10 && num <= 20)
             countInterval++
     })
@@ -20,18 +20,18 @@ function ex01() {
 }
 
 
-function ex02() {
+function exercicio02() {
     let listC = []
 
-    listA.forEach((num, idx) => {
-        listC.push(num * listB[idx])
-    })
+    for(let i = 0; i < listA.length; i++) {
+        listC.push(listA[i] * listB[i])
+    }
 
     console.log(`lista C ${listC}\n`)
 }
 
 
-function ex03() {
+function exercicio03() {
 
     let listD = []
 
