@@ -4,7 +4,7 @@ function function_name(val) {
     return val
 }
 
-console.log(function_name('valor'))
+/* console.log(function_name('valor')) */
 
 // ---------------------- exemplo 2 ---------------------- //
 
@@ -12,9 +12,9 @@ function fun_1(...params) {
     console.log(params.length)
 }
 
-fun_1()
+/* fun_1()
 fun_1(5)
-fun_1(5, 6, 7)
+fun_1(5, 6, 7) */
 
 
 // ---------------------- exemplo 3 ---------------------- //
@@ -39,21 +39,21 @@ function fazRequisicao() {
     })
 }
 
-fazRequisicao()
+/* fazRequisicao()
     .then(console.log)
     .catch(console.log)
     .finally(console.log("Finalizando"))
-
+ */
 
  // ---------------------- exemplo 5 ---------------------- //
 
-fetch = require("node-fetch")
+/* fetch = require("node-fetch")
 let cepBuscado
 console.log("Buscando CEP")
 cepBuscado = buscarCep("13845373")
 console.log("CEP buscado")
 console.log("CEP encontrado: " + cepBuscado)
-
+ */
 
  function buscarCep(param) {
     let cep
@@ -71,10 +71,12 @@ console.log("CEP encontrado: " + cepBuscado)
 
 function promiseSoma(num1, num2) {
     return new Promise((resolve, reject) => {
-        if(num1 < 0 || num2 < 0)
-            reject("Os números devem ser positivos")
-        
-        resolve(num1 + num2)
+        if(num1 <= 0 || num2 <= 0)
+            reject("Erro: ambos os números devem ser positivos")
+
+        setTimeout(() => {
+            resolve(num1 + num2)
+        }, 2000)
     })
 }
 
@@ -83,4 +85,4 @@ let num1 = 2, num2 = 4
 promiseSoma(num1, num2)
     .then(response => console.log(response * 2))
     .catch(err => console.error(err))
-    .finally(console.log(`${num1} + ${num2} * 2 = `))
+    .finally(console.log(`(${num1} + ${num2}) * 2 = `))
