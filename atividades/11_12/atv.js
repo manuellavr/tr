@@ -27,7 +27,7 @@ function product() {
     console.log("The product: " + result)
 }
 
-//product()
+// product()
 
 // ---------------------- exemplo 4 ---------------------- //
 
@@ -42,8 +42,8 @@ function fazRequisicao() {
 /* fazRequisicao()
     .then(console.log)
     .catch(console.log)
-    .finally(console.log("Finalizando"))
- */
+    .finally(console.log("Finalizando")) */
+
 
  // ---------------------- exemplo 5 ---------------------- //
 
@@ -52,8 +52,8 @@ let cepBuscado
 console.log("Buscando CEP")
 cepBuscado = buscarCep("13845373")
 console.log("CEP buscado")
-console.log("CEP encontrado: " + cepBuscado)
- */
+console.log("CEP encontrado: " + cepBuscado) */
+
 
  function buscarCep(param) {
     let cep
@@ -76,7 +76,7 @@ function promiseSoma(num1, num2) {
 
         setTimeout(() => {
             resolve(num1 + num2)
-        }, 2000)
+        }, 1500)
     })
 }
 
@@ -84,5 +84,5 @@ let num1 = 2, num2 = 4
 
 promiseSoma(num1, num2)
     .then(response => console.log(response * 2))
-    .catch(err => console.error(err))
-    .finally(console.log(`(${num1} + ${num2}) * 2 = `))
+    .catch(console.error)
+
