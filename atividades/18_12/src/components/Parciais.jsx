@@ -1,11 +1,11 @@
-export default function Partial({ partials }) {
+export default function Parciais({ partials }) {
     return (
         <>
             <div className="partials_label">
                 <h1>Parciais</h1>
             </div>
             <div className="partials_container">
-                {partials && partials.map((part, idx) => <h3 key={idx}> #0{ idx }: { part }</h3>)}
+                {partials.map((partial, idx) => <h2 key={idx}> #{ idx + 1 }: &emsp; { partial }</h2>)}
             </div>
         </>
     )

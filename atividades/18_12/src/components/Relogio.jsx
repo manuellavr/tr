@@ -17,8 +17,8 @@ export default function Relogio() {
 
     return (
         <div className="clock">
-            <h1>Relógio</h1>
-            <h2>{ clock }</h2>
+            <h1 className="clock_label">Relógio</h1>
+            <h2 className="clock_time">{ clock }</h2>
         </div>
     )
 }
