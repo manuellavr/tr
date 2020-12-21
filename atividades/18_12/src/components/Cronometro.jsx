@@ -1,25 +1,26 @@
 import Parciais from './Parciais';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Cronometro() {
     
     const [centiseconds, setCentiseconds] = useState(0)
     const [pause, setPause] = useState(true)
     const [partials, setPartials] = useState([])
-    const [timer, setTimer] = useState(null)
   
+    useEffect(() => { 
+        let interval;
+
+        if(!pause) {
+            interval = setInterval(() => {
+                        setCentiseconds(centiseconds => centiseconds + 1)
+                    }, 10)
+        }
+        
+        return () => { clearInterval(interval) }
+    }, [pause, centiseconds])
+
     const togglePause = () => {
         setPause(pause => !pause);
-        if(pause) {
-            setTimer(
-                setInterval(() => {
-                    setCentiseconds(centiseconds => centiseconds + 1)
-                }, 10)
-            )
-        }
-        else{
-            clearInterval(timer);
-        }
     }
   
     const reset = () => {
