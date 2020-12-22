@@ -54,34 +54,45 @@ const Timer = () => {
     }, [timeLeftInSeconds, pause])
 
     return (
-        <div className='timer'>
-            <h1>
+        <>
+        <div className='timer main'>
+            <h1 className="timer_label">
+                Timer
+            </h1>
+            <h1 className='timer_label'>
                 {formatTime()}
             </h1>
-            <select 
-                ref={selectHour}
-                name='selectHour' 
-                id='selectHour' 
-            >
-               { [...Array(24).keys()].map(x => <option key={x} value={x}>{x}</option>) }
-            </select>
-            <select 
-                ref={selectMinute}
-                name='selectMinute' 
-                id='selectMinute' 
-            >
-               { [...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>) }
-            </select>
-            <select 
-                ref={selectSeconds}
-                name='selectSeconds' 
-                id='selectSeconds' 
-            >
-               { [...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>) }
-            </select>
-            <button onClick={pause ? startTimer : togglePause }>{pause ? 'Iniciar ': 'Pausar' }</button>
-            <button onClick={zerar}>Zerar</button>
         </div>
+        <div className="timerComplement">
+            <div className="timerComplement_select">
+                <select 
+                    ref={selectHour}
+                    name='selectHour' 
+                    id='selectHour' 
+                >
+                { [...Array(24).keys()].map(x => <option key={x} value={x}>{x}</option>) }
+                </select>
+                <select 
+                    ref={selectMinute}
+                    name='selectMinute' 
+                    id='selectMinute' 
+                >
+                { [...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>) }
+                </select>
+                <select 
+                    ref={selectSeconds}
+                    name='selectSeconds' 
+                    id='selectSeconds' 
+                >
+                { [...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>) }
+                </select>
+            </div>
+            <div className="timerComplement_buttons">
+                <button onClick={pause ? startTimer : togglePause }>{pause ? 'Iniciar ': 'Pausar' }</button>
+                <button onClick={zerar}>Zerar</button>
+            </div>
+        </div>
+        </>
     )
 }
 

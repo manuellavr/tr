@@ -1,7 +1,7 @@
 .App {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: 30vh 30vh 30vh;
+  grid-template-columns: 33vw 33vw 33vw;
+  grid-template-rows: 10vh 30vh 30vh 30vh;
   align-items: center;
   text-align: center;
   background-color: #2d3541;
@@ -36,7 +36,7 @@ button:focus {
 
 .clock {
   grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  grid-row: 2 / 3;
   font-size: 1.2em;
 }
 
@@ -48,10 +48,10 @@ button:focus {
   color:rgb(235, 227, 198);
 }
 
-.stopwatch {
+.main {
   align-self: baseline;
   grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-row: 2 / 4;
   color: rgb(236, 228, 197);
   align-items: center;
   justify-content: center;
@@ -61,7 +61,7 @@ button:focus {
 .partials_label {
   align-self: baseline;
   grid-column: 3 / 4;
-  grid-row: 1 / 2;
+  grid-row: 2 / 3;
   align-self: center;
   color: rgb(201, 186, 126);
   font-size: 1.2em;
@@ -77,6 +77,24 @@ button:focus {
 
 .partials_container h2 {
   font-weight: 500;
+}
+
+.timer {
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
+  justify-content: center;
+}
+
+.timerComplement {
+  grid-column: 3 / 4;
+  grid-row: 2 / 4;
+  justify-content: center;
+  align-self: baseline;
+  margin-bottom: 100px;
+}
+
+.timerComplement_buttons {
+  margin-top: 50px;
 }
 
 @media(max-width: 728px) {

@@ -42,7 +42,7 @@ export default function Cronometro() {
     
     return (
         <>
-            <div className="stopwatch">
+            <div className="stopwatch main">
                 <h1>Cronômetro</h1>
                 <h1>{centisecondsToMinutes()}:{centisecondsToSeconds()},{centiseconds%100}</h1>
 
