@@ -1,0 +1,88 @@
+import { useState, useEffect, useRef } from 'react'
+
+const Timer = () => {
+    const selectHour = useRef(null)
+    const selectMinute = useRef(null)
+    const selectSeconds = useRef(null)
+    const [timeLeftInSeconds, setTimeLeftInSeconds] = useState(0);
+    const [pause, setPause] = useState(true);
+    const [currentlyCounting, setCurrentlyCounting] = useState(false);
+
+    const startTimer = () => {
+        if(!currentlyCounting) {  
+            setCurrentlyCounting(true) 
+            setTimeLeftInSeconds((Number(selectHour.current.value) * 3600) + (Number(selectMinute.current.value) * 60) + Number(selectSeconds.current.value))
+        }
+        togglePause()
+        limparCampos()
+    }
+
+    const togglePause = () => {
+        setPause(pause => !pause)
+    }
+
+    const formatTime = () => {
+        return `${Math.floor(timeLeftInSeconds/3600 % 24)}:${Math.floor(timeLeftInSeconds/60 % 60)}:${timeLeftInSeconds % 60}`;
+    }
+
+    const zerar = () => {
+        setTimeLeftInSeconds(0)
+        setCurrentlyCounting(false)
+        setPause(true)
+    }
+
+    const limparCampos = () => {
+        selectHour.current.value = 0
+        selectMinute.current.value = 0
+        selectSeconds.current.value = 0
+    }
+
+    useEffect(() => {
+        let interval;
+
+        if(!pause) {
+            interval = setInterval(() => {
+                if(timeLeftInSeconds > 0) {
+                    setTimeLeftInSeconds(timeLeft => timeLeft - 1)
+                }
+                else
+                    setCurrentlyCounting(false)
+            }, 1000)
+        }
+
+        return () => { clearInterval(interval) }
+    }, [timeLeftInSeconds, pause])
+
+    return (
+        <div className='timer'>
+            <h1>
+                {formatTime()}
+            </h1>
+            <select 
+                ref={selectHour}
+                name='selectHour' 
+                id='selectHour' 
+            >
+               { [...Array(24).keys()].map(x => <option key={x} value={x}>{x}</option>) }
+            </select>
+            <select 
+                ref={selectMinute}
+                name='selectMinute' 
+                id='selectMinute' 
+            >
+               { [...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>) }
+            </select>
+            <select 
+                ref={selectSeconds}
+                name='selectSeconds' 
+                id='selectSeconds' 
+            >
+               { [...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>) }
+            </select>
+            <button onClick={pause ? startTimer : togglePause }>{pause ? 'Iniciar ': 'Pausar' }</button>
+            <button onClick={zerar}>Zerar</button>
+        </div>
+    )
+}
+
+export default Timer;

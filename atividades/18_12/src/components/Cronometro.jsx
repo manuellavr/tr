@@ -6,7 +6,7 @@ export default function Cronometro() {
     const [centiseconds, setCentiseconds] = useState(0)
     const [pause, setPause] = useState(true)
     const [partials, setPartials] = useState([])
-  
+
     useEffect(() => { 
         let interval;
 
