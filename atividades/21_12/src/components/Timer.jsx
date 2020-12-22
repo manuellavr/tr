@@ -64,6 +64,9 @@ const Timer = () => {
             </h1>
         </div>
         <div className="timerComplement">
+            <h1>
+                Defina o tempo:
+            </h1>
             <div className="timerComplement_select">
                 <select 
                     ref={selectHour}
