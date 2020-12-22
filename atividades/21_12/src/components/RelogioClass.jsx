@@ -7,6 +7,7 @@ export default class Relogio extends React.Component {
         this.state = {
             clock: ''
         }
+        this.interval = null;
     }
 
     componentDidMount() {
