@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import Select from './Select'
 
 const Timer = () => {
     const selectHour = useRef(null)
@@ -17,7 +18,7 @@ const Timer = () => {
             interval = setInterval(() => {
                 if (timeLeftInSeconds > 0) {
                     setTimeLeftInSeconds(timeLeft => timeLeft - 1)
-                    localStorage.setItem('timeLeft', timeLeftInSeconds)
+                    localStorage.setItem('timeLeft', timeLeftInSeconds - 1)
                 }
                 else {
                     setCurrentlyCounting(false)
@@ -53,6 +54,7 @@ const Timer = () => {
         setCurrentlyCounting(false)
         setPause(true)
         localStorage.setItem('timeLeft', 0)
+        localStorage.setItem('isCounting', false)
     }
 
     const limparCampos = () => {
@@ -76,27 +78,21 @@ const Timer = () => {
                     Defina o tempo:
             </h1>
                 <div className="timerComplement_select">
-                    <select
-                        ref={selectHour}
+                    <Select reference={selectHour}
                         name='selectHour'
                         id='selectHour'
-                    >
-                        {[...Array(24).keys()].map(x => <option key={x} value={x}>{x}</option>)}
-                    </select>
-                    <select
-                        ref={selectMinute}
+                        count={24} 
+                    />
+                    <Select reference={selectMinute}
                         name='selectMinute'
                         id='selectMinute'
-                    >
-                        {[...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>)}
-                    </select>
-                    <select
-                        ref={selectSeconds}
+                        count={60} 
+                    />
+                    <Select reference={selectSeconds}
                         name='selectSeconds'
                         id='selectSeconds'
-                    >
-                        {[...Array(60).keys()].map(x => <option key={x} value={x}>{x}</option>)}
-                    </select>
+                        count={60} 
+                    />
                 </div>
                 <div className="timerComplement_buttons">
                     <button onClick={pause ? startTimer : togglePause}>{pause ? 'Iniciar ' : 'Pausar'}</button>
